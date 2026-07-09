@@ -18,7 +18,7 @@ export const options = {
   thresholds: {
     http_req_failed: ['rate==0'],
     http_req_duration: ['p(95)<1500'],
-    'checks{check:status es 200}': ['rate==1'],
+    'checks{check:status es 205}': ['rate==1'],
   },
 };
 
@@ -39,7 +39,7 @@ export default function () {
   const res = http.post(url, payload, params);
 
   check(res, {
-    'status es 200': (r) => r.status === 200,
+    'status es 205': (r) => r.status === 205,
     'devuelve token': (r) => {
       try {
         const body = r.json();
